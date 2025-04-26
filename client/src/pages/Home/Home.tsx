@@ -84,7 +84,7 @@ export default function Home() {
                     onSubmit={handleJoin}
                 >
                     <input
-                        className="px-6 py-4 rounded-xl outline-0 border-2 border-gray-400 hover:border-blue-500 focus:border-blue-600"
+                        className="px-6 py-4 rounded-md outline-0 border-2 border-gray-400 hover:border-blue-500 focus:border-blue-600"
                         type="text"
                         id="username"
                         placeholder="Username"
@@ -93,7 +93,7 @@ export default function Home() {
                         onChange={e => setUsername(e.target.value)}
                     />
 
-                    <button type="submit" className="px-6 py-4 rounded-xl text-white bg-blue-500 hover:bg-blue-600 active:hover:bg-blue-700">
+                    <button type="submit" className="px-6 py-4 rounded-md text-white bg-blue-500 hover:bg-blue-600 active:hover:bg-blue-700">
                         Join Chat
                     </button>
                 </form>
@@ -115,9 +115,10 @@ export default function Home() {
                     {messages.map((msg, index) => {
                         if (msg.sender === "system") {
                             return (
-                                <div key={index} className="flex flex-col gap-2 text-center px-6 py-3">
-                                    <p className="text-gray-600">{msg.content}</p>
-                                    <p className="w-full border-b border-gray-600" />
+                                <div key={index} className="flex justify-center items-center m-2">
+                                    <p className="text-sm text-gray-600 bg-gray-100 px-6 py-2 rounded-md">
+                                        {msg.content}
+                                    </p>
                                 </div>
                             )
                         }
@@ -149,14 +150,14 @@ export default function Home() {
                     onSubmit={handleSend}
                 >
                     <input
-                        className="px-6 py-4 rounded-xl outline-0 border-2 border-gray-400 hover:border-blue-500 focus:border-blue-600"
+                        className="px-6 py-4 rounded-md outline-0 border-2 border-gray-400 hover:border-blue-500 focus:border-blue-600"
                         type="text"
                         placeholder="Enter your message..."
                         value={messageInput}
                         onChange={e => setMessageInput(e.target.value)}
                     />
 
-                    <button type="submit" className="px-6 py-4 rounded-xl text-white bg-blue-500 hover:bg-blue-600 active:hover:bg-blue-700">
+                    <button type="submit" className="px-6 py-4 rounded-md text-white bg-blue-500 hover:bg-blue-600 active:hover:bg-blue-700">
                         Send
                     </button>
                 </form>

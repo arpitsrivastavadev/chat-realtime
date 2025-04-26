@@ -42,7 +42,7 @@ wss.on("connection", (ws: WebSocket) => {
             broadcastMessage({
                 type: "message",
                 sender: "system",
-                content: `Connected: ${message.username}`,
+                content: `${message.username} has joined the chat`,
                 timestamp: Date.now()
             })
         }
@@ -64,7 +64,7 @@ wss.on("connection", (ws: WebSocket) => {
         broadcastMessage({
             type: "message",
             sender: "system",
-            content: `Disconnected: ${username}`,
+            content: `${username} has left the chat`,
             timestamp: Date.now()
         })
     })
