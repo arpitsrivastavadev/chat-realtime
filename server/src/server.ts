@@ -1,18 +1,23 @@
 import express from "express"
 import { WebSocket, WebSocketServer } from "ws"
 import cors from "cors"
+import http from "http"
+import dotenv from "dotenv"
+
+
+dotenv.config()
 
 
 const app = express()
-const PORT = 8000
-const PORT_WSS = 8001
+const PORT = process.env.PORT || 8000
 
 
 app.use(cors())
 app.use(express.json())
 
 
-const wss = new WebSocketServer({ port: PORT_WSS })
+const server = http.createServer(app)
+const wss = new WebSocketServer({ server })
 
 
 type JoinMessage = {
@@ -36,7 +41,7 @@ wss.on("connection", (ws: WebSocket) => {
     ws.on("message", (data: string) => {
         const message = JSON.parse(data) as JoinMessage | ChatMessage
 
-        if (message.type == "join") {
+        if (message.type === "join") {
             clients.set(ws, message.username)
 
             broadcastMessage({
@@ -47,7 +52,7 @@ wss.on("connection", (ws: WebSocket) => {
             })
         }
 
-        else if (message.type == "message") {
+        else if (message.type === "message") {
             broadcastMessage({
                 type: "message",
                 sender: clients.get(ws) ?? "Anonymous",
@@ -83,6 +88,6 @@ const broadcastMessage = (message: ChatMessage) => {
 }
 
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server running at: http://localhost:${PORT}`)
 })

@@ -27,7 +27,7 @@ export default function Home() {
 
     useEffect(() => {
         if (joined && ws.current === null) {
-            ws.current = new WebSocket("http://localhost:8001")
+            ws.current = new WebSocket(import.meta.env.VITE_BACKEND_URL)
 
             ws.current.onmessage = (e) => {
                 const msg = JSON.parse(e.data) as ChatMessage
