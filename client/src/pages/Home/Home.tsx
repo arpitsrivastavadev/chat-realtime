@@ -80,7 +80,7 @@ export default function Home() {
         return (
             <div className="w-full h-full flex flex-col justify-center items-center">
                 <form
-                    className="w-[512px] p-16 bg-white shadow-md rounded-xl flex flex-col gap-4 text-xl"
+                    className="w-[80%] max-w-[512px] p-16 bg-white shadow-md rounded-xl flex flex-col gap-4 text-xl"
                     onSubmit={handleJoin}
                 >
                     <input
@@ -104,7 +104,7 @@ export default function Home() {
 
     return (
         <div className="w-full h-full flex flex-col justify-center items-center">
-            <div className="max-w-[1024px] w-[80%] h-[80%] flex flex-col bg-white shadow-md rounded-xl">
+            <div className="max-w-[1024px] w-[100%] h-[90%] flex flex-col bg-white shadow-md rounded-xl">
 
                 <div className="gap-2 border-b border-gray-300 px-6 py-4">
                     <h1 className="text-2xl mb-2">Chat Room</h1>
